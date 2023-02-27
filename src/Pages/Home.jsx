@@ -18,11 +18,11 @@ export function Home() {
 
     const [todos, setTodos] = useState(getLocalStorage())
 
-  useEffect(() => {
+    useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    }, [todos]);
 
-  const addTodo = (title) => {
+    const addTodo = (title) => {
 
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
 

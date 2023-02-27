@@ -17,8 +17,8 @@ export const Todo = ({ todo, handleSetComplete, handleDelete }) => {
                     </div>
                     )
                         : (
-                            <span onClick={() => handleSetComplete(id)} className={`border border-emerald-500 border-solid p-3 rounded-full cursor-pointer`}>
-                            </span>
+                            <img onClick={() => handleSetComplete(id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in" src="/hearticon.svg" alt="heart">
+                            </img>
                         )
                 }
 
