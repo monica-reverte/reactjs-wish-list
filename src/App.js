@@ -6,29 +6,22 @@ import { TodoInput } from "./components/Todoinput";
 
 
 
+const getLocalStorage = () => {
+  let todos = localStorage.getItem("todos");
+  if(todos) {
+    return (todos = JSON.parse(localStorage.getItem("todos")));
+
+  }else {
+    return []
+  }
+};
+
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Understand React',
-      completed: false,
-    },
-    {
-      id: 2,
-      title: 'Improve JavaScript',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Stop feeling impostor syndrome',
-      completed: false,
-    },
-    {
-      id: 4,
-      title: 'Have more time',
-      completed: false,
-    }
-  ])
+  const [todos, setTodos] = useState(getLocalStorage())
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const [activeFilter, setActiveFilter] = useState('all');
 
