@@ -8,13 +8,13 @@ export const TodoFilters = ({ total, activeFilter, showAllTodos, showActiveTodos
             <ItemsLeft total={total} />
             <FilterButtonContainer>
                 <Link to={'/'}>
-                    <FilterButton action={() => showAllTodos()} active={activeFilter} filter='All' />
+                    <FilterButton  active={activeFilter} filter='All' />
                 </Link>
                 <Link to={'/active'}>
-                    <FilterButton action={() => showActiveTodos()} active={activeFilter} filter='Active' />
+                    <FilterButton  active={activeFilter} filter='Active' />
                 </Link>
                 <Link to={'/completed'}>
-                <FilterButton action={() => showCompletedTodos()} active={activeFilter} filter='Completed' />
+                <FilterButton active={activeFilter} filter='Completed' />
                 </Link>
             </FilterButtonContainer>
 
