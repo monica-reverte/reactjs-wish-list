@@ -27,5 +27,4 @@ export const TodoInput = ({ addTodo }) => {
                 placeholder="Make a wish"
             />
         </div>
-    )
-}
+    )}

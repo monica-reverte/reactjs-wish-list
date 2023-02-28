@@ -3,16 +3,10 @@ import { useState, useEffect } from 'react';
 import { Title } from "../components/Title";
 import { TodoList } from "../components/TodoList";
 import { TodoInput } from "../components/Todoinput";
+import { getLocalStorage } from "../components/Utils/utils";
 
 
-const getLocalStorage = () => {
-    let todos = localStorage.getItem("todos");
-    if(todos) {
-        return (todos = JSON.parse(localStorage.getItem("todos")));
-    }else {
-        return []
-    }
-};
+
 
 export function Home() {
 
@@ -23,6 +17,7 @@ export function Home() {
     }, [todos]);
 
     const addTodo = (title) => {
+
 
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
 
