@@ -2,7 +2,7 @@ import React from 'react';
 import { FilterButton, FilterButtonContainer, FiltersContainer, ItemsLeft } from "./TodoFiltersComponents";
 import { Link } from 'react-router-dom';
 
-export const TodoFilters = ({ total, activeFilter, showAllTodos, showActiveTodos, showCompletedTodos, handleClearComplete }) => {
+export const TodoFilters = ({ total, activeFilter, handleClearComplete }) => {
     return (
         <FiltersContainer>
             <ItemsLeft total={total} />
@@ -18,7 +18,7 @@ export const TodoFilters = ({ total, activeFilter, showAllTodos, showActiveTodos
                 </Link>
             </FilterButtonContainer>
 
-            <button onClick={() => handleClearComplete()} className="text-emerald-400 hover:text-white cursor-pointer transition-all duration-300 ease-in-out">
+            <button onClick={() => handleClearComplete()} className="text-violet-400 hover:text-white cursor-pointer transition-all duration-300 ease-in-out">
                 Clear Completed
             </button>
         </FiltersContainer>

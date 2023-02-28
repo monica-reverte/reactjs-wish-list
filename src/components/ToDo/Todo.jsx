@@ -8,11 +8,11 @@ export const Todo = ({ todo, handleSetComplete, handleDelete }) => {
 
         
         <div
-            className="flex items-center justify-between p-4 mb-1 mt-1 rounded-lg bg-emerald-700 border-b border-solid border-emerald-600 ">
+            className="flex items-center justify-between p-4 mb-1 mt-1 rounded-lg text-violet-100 bg-violet-700 border-b border-solid border-violet-600 ">
             <div className="flex items-center">
             {
                 completed ? (
-                    <div onClick={() => handleSetComplete(id)} className="bg-yellow-700 p-1 rounded-full cursor-pointer">
+                    <div onClick={() => handleSetComplete(id)} className="bg-violet-300 p-1 rounded-full cursor-pointer">
                         <img className="h-4 w-4 " src="/checkicon.svg" alt="Check Icon" />
                     </div>
                     )

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const FiltersContainer = ({ children }) => {
   return (
-      <div className="flex items-center justify-between p-4 mt-1 mb-1 bg-emerald-700 border-b border-solid rounded-lg border-emerald-600">
+      <div className="flex items-center justify-between p-4 mt-1 mb-1 text-violet-100 bg-violet-700 border-b border-solid rounded-lg border-violet-600">
           {children}
       </div>
   )
@@ -10,8 +10,8 @@ export const FiltersContainer = ({ children }) => {
 
 export const ItemsLeft = ({ total }) => {
   return (
-      <p className="text-emerald-400 text-sm">
-          {total} items left
+      <p className="text-violet-100 text-sm">
+          {total} whish left
       </p>
   )
 };
@@ -29,7 +29,7 @@ export const FilterButtonContainer = ({
 export const FilterButton = ({ action, active, filter }) => {
   return (
       <button className={` hover:text-white cursor-pointer transition-all duration-300 ease-in-out `
-              + (active.toLowerCase().includes(filter.toLowerCase()) ? 'text-yellow-400' : 'text-emerald-400')}>{filter}</button>
+              + (active.toLowerCase().includes(filter.toLowerCase()) ? 'text-violet-100' : 'text-violet-400')}>{filter}</button>
   )
 }
 

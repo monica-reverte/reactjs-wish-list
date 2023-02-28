@@ -19,7 +19,7 @@ export const TodoInput = ({ addTodo }) => {
             <img className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in" src="/hearticon.svg" alt="heart"></img>
             </div>
             <input
-                className="focus:shadow-lg font-Inter focus:shadow-yellow-800 pl-12 w-full py-4 bg-emerald-700 rounded-xl outline-none transition-all duration-300 ease-in-out"
+                className="focus:shadow-lg font-Inter focus:shadow-gray-700 pl-12 w-full py-4 bg-violet-300 rounded-xl outline-none transition-all duration-300 ease-in-out"
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
