@@ -25,7 +25,6 @@ export const Todo = ({ todo, handleSetComplete, handleDelete}) => {
             </div>
             
             <div className="justify-items-end">
-            <img className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in" src="/editicon.svg" alt="edit icon"/>
             <img onClick={() => handleDelete(id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"src="/closeicon.svg" alt="close icon"/>
             </div>
         </div>
