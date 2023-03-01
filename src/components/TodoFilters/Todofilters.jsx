@@ -18,7 +18,7 @@ export const TodoFilters = ({ total, activeFilter, handleClearComplete }) => {
                 </Link>
             </FilterButtonContainer>
 
-            <button onClick={() => handleClearComplete()} className="text-violet-400 hover:text-white cursor-pointer transition-all duration-300 ease-in-out">
+            <button onClick={() => handleClearComplete()} className="text-violet-400 font-bold hover:text-white cursor-pointer transition-all duration-300 ease-in-out">
                 Clear Completed
             </button>
         </FiltersContainer>

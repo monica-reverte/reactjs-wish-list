@@ -26,5 +26,6 @@ export const TodoInput = ({ addTodo }) => {
                 onKeyDown={(e) => handleAddTodo(e)}
                 placeholder="Make a wish"
             />
+            
         </div>
     )}

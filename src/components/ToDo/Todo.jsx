@@ -1,14 +1,13 @@
 import React from 'react';
 
-export const Todo = ({ todo, handleSetComplete, handleDelete }) => {
+export const Todo = ({ todo, handleSetComplete, handleDelete}) => {
 
     const { id, title, completed } = todo;
 
     return (
 
         
-        <div
-            className="flex items-center justify-between p-4 mb-1 mt-1 rounded-lg text-violet-100 bg-violet-700 border-b border-solid border-violet-600 ">
+        <div className="flex items-center justify-between p-4 mb-1 mt-1 rounded-lg text-violet-100 bg-violet-700 border-solid border-violet-600">
             <div className="flex items-center">
             {
                 completed ? (

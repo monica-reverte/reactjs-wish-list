@@ -8,16 +8,16 @@ import { getLocalStorage } from "../components/Utils/utils";
 
 
 
+
 export function Home() {
 
-    const [todos, setTodos] = useState(getLocalStorage())
+    const [todos, setTodos] = useState(getLocalStorage());
 
     useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
 
     const addTodo = (title) => {
-
 
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
 
@@ -35,8 +35,11 @@ export function Home() {
 
 
 const [activeFilter, setActiveFilter] = useState('all');
-
 const [filteredTodos, setFilteredTodos] = useState(todos);
+
+
+
+
 
 
 
@@ -50,6 +53,7 @@ const handleSetComplete = (id) => {
     })
 
     setTodos(updatedList);
+
 } 
 
 const handleClearComplete = () => {
@@ -61,6 +65,7 @@ const handleDelete = (id) => {
     const updatedList = todos.filter(todo => todo.id !== id);
     setTodos(updatedList);
 }
+
 
 const showAllTodos = () => {
     setActiveFilter('all')

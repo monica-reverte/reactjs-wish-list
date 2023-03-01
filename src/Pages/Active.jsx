@@ -90,6 +90,7 @@ useEffect(() => {
             handleSetComplete={handleSetComplete}
             handleDelete={handleDelete}
             handleClearComplete={handleClearComplete} />
+            
     </div>
     
     )

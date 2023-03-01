@@ -16,13 +16,8 @@ export const TodoList = ({
 
                 
                 
-        <div className="flex flex-col mt-7 rounded-lg overflow-hidden shadow-2xl">
-            {todos.length > 0 ? (
-            todos.map(todo => (
-                <Todo key={todo.id} todo={todo} handleSetComplete={handleSetComplete} handleDelete={handleDelete} />
-            )
-            )):(<div className="flex flex-col items-center mb-4"><p className="text-2xl">Your wish List is empty! Time to start wishing</p>
-            <img className="h-40 w-40 m-5 " src="/wishicon.svg" alt="Wish Icon" /> </div>)}
+        <div >
+            <div>
             <TodoFilters
                 activeFilter={activeFilter}
                 total={todos.length}
@@ -30,5 +25,15 @@ export const TodoList = ({
                 showActiveTodos={showActiveTodos}
                 showCompletedTodos={showCompletedTodos}
                 handleClearComplete={handleClearComplete} />
+            </div>
+            <div className="flex flex-col mt-2 rounded-lg overflow-hidden">
+            {todos.length > 0 ? (
+            todos.map(todo => (
+                <Todo key={todo.id} todo={todo} handleSetComplete={handleSetComplete} handleDelete={handleDelete} />
+            )
+            )):(<div className="flex flex-col items-center mb-4"><p className="text-2xl">Your wish List is empty! Time to start wishing</p>
+            <img className="h-40 w-40 m-5 " src="/wishicon.svg" alt="Wish Icon" /> </div>)}
+            </div>
+            
         </div>)
 }
