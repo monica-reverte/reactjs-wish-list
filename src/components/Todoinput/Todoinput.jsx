@@ -24,7 +24,7 @@ export const TodoInput = ({ addTodo }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={(e) => handleAddTodo(e)}
-                placeholder="Make a wish"
+                placeholder="Write your wish"
             />
             
         </div>

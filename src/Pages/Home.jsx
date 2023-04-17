@@ -67,7 +67,6 @@ const handleDelete = (id) => {
 }
 
 
-
 const showAllTodos = () => {
     setActiveFilter('all')
 }
