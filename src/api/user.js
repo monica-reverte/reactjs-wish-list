@@ -2,24 +2,6 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:4000';
 
-// export const register = async (user) => {
-//   const response = await fetch(`${API_URL}/api/users/register`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(user),
-//   });
-
-//   const data = await response.json();
-
-//   if (response.ok) {
-//     return data;
-//   } else {
-//     throw new Error(data.message);
-//   }
-// };
-
-
-
 export const register = async (user) => {
     try {
         const res = await axios.post(`${API_URL}/api/users/register`, user);
@@ -33,7 +15,7 @@ export const register = async (user) => {
 export const login = async (user) => {
     try{
 
-        const res = await axios.post("/api/users/login", user);
+        const res = await axios.post(`${API_URL}/api/users/login`, user);
         return res;
 
     }catch(err) {
@@ -44,7 +26,7 @@ export const login = async (user) => {
 export const logout = async () => {
     try{
 
-        const res = await axios.get("/api/users/logout");
+        const res = await axios.get(`${API_URL}/api/users/logout`);
         return res;
 
     }catch(err) {
@@ -55,7 +37,7 @@ export const logout = async () => {
 export const getUser = async () => {
     try{
 
-        const res = await axios.get("/api/users/me");
+        const res = await axios.get(`${API_URL}/api/users/me`);
         return res;
 
     }catch(err) {
@@ -66,7 +48,7 @@ export const getUser = async () => {
 export const updateUser = async (user) => {
     try{
 
-        const res = await axios.put("/api/users/updatedetails", user);
+        const res = await axios.put(`${API_URL}/api/users/updatedetails`, user);
         return res;
 
     }catch(err) {
@@ -77,7 +59,7 @@ export const updateUser = async (user) => {
 export const updatePassword = async (data) => {
     try{
 
-        const res = await axios.put("/api/users/updatepassword", data);
+        const res = await axios.put(`${API_URL}/api/users/updatepassword`, data);
         return res;
 
     }catch(err) {
@@ -88,7 +70,7 @@ export const updatePassword = async (data) => {
 export const deleteUser = async () => {
     try{
 
-        const res = await axios.delete("/api/users/delete");
+        const res = await axios.delete(`${API_URL}/api/users/delete`);
         return res;
 
     }catch(err) {

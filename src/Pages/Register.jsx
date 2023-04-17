@@ -39,6 +39,8 @@ export const Register = () => {
         alert("User registered successfully");
         setUser(response.data.user);
         navigate("/");
+      } else if (response.response && response.response.data && response.response.data.msg) {
+        alert(response.response.data.msg);
       } else {
         alert(response.data.msg);
       }
