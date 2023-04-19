@@ -39,7 +39,7 @@ export function Active() {
 }
 
 
-const [activeFilter, setActiveFilter] = useState('active');
+const [activeFilter] = useState('active');
 
 const [filteredTodos, setFilteredTodos] = useState(todos);
 

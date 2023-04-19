@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 
 export const PrivateRoutes = () => {
 
-  const { auth } = useAuth();
+  const auth = useAuth();
 
     if(auth === undefined) return "loading ...";
 

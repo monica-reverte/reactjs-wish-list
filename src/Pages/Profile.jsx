@@ -1,9 +1,31 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
 
 
 
 
 export const Profile = () => {
+  
+  const [user, setUser] = useState(null);
 
+  const getUser = async()=>{
+    try{
+      const {data} = await axios.get("/api/users/me");
+      setUser(data)
+    }catch(err){
+      console.log(err);
+    }
+  };
+
+  useEffect(()=>{
+    getUser();
+  }, []);
+
+
+
+  if(!user) return null;
 
   return (
     <div className="w-1/4 m-auto text-center">
@@ -13,10 +35,12 @@ export const Profile = () => {
         <h2 className="text-2xl">Email:  </h2>
       </div>
       <div className="mt-3">
-        <button className="bg-violet-700 text-white w-full my-2 py-2 rounded">Update Profile</button>
-        <button className="bg-violet-700 text-white w-full py-2 rounded">Update Password</button>
-        <button  className="bg-violet-700 text-white w-full py-2 rounded">Logout</button>
-        <button className="bg-violet-700 text-white w-full py-2 rounded">Delete Account</button>
+        <Link to="/edit-profile">
+          <button className="bg-violet-700 text-white w-full my-2 py-2 rounded">Edit Profile</button>
+        </Link>
+      </div>
+      <div>
+      <button className="bg-violet-700 text-white w-full my-2 py-2 rounded">Logout</button>
       </div>
     </div>
   )

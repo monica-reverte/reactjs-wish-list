@@ -39,7 +39,7 @@ export function Completed() {
 }
 
 
-const [activeFilter, setActiveFilter] = useState('completed');
+const [activeFilter] = useState('completed');
 
 const [filteredTodos, setFilteredTodos] = useState(todos);
 

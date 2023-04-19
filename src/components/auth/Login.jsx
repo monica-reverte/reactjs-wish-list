@@ -38,3 +38,24 @@ export const Login = () => {
     </div>
   )
 }
+
+
+// export const Login = () => {
+//   const navigate = useNavigate();
+
+//   const login = async (e) => {
+//     e.preventDefault();
+//     const email = e.target.email.value;
+//     const password = e.target.password.value;
+//     try {
+//       const res = await axios.post('http://localhost:4000/api/auth/login', {
+//         email,
+//         password,
+//       });
+//       console.log(res)
+//       localStorage.setItem('token', res.data.access_token);
+
+//       navigate('/');
+//     } catch (err) {
+//       console.log(err);
+//     }
