@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./Pages/Home";
 import { Active } from "./Pages/Active";
 import { Completed } from "./Pages/Completed";
-import { Login } from './Pages/Login';
-import { Register } from './Pages/Register';
 import { NavBar } from './components/NavBar';
 import { Profile } from './Pages/Profile';
-import { UserContextProvider } from './Context/UserContext';
+import { PrivateRoutes } from './components/PrivateRoutes';
+import { Auth } from './Pages/Auth';
+
+
 
 function App() {
 
@@ -17,17 +18,18 @@ function App() {
       <div className='container flex flex-col max-w-xl'>
       
         <BrowserRouter>
-          <UserContextProvider>
             <NavBar />
               <Routes>
+                <Route element ={<PrivateRoutes />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/active' element={<Active />} />
                 <Route path='/completed' element={<Completed />} />
-                <Route path='/user/login' element={<Login />} />
-                <Route path='/user/register' element={<Register/>} />
-                <Route path='/user/profile' element={<Profile/>} />
-              </Routes>   
-          </UserContextProvider>   
+                <Route path='/profile' element={<Profile/>} />
+                </Route>
+
+                <Route path="/auth" element={<Auth />} />
+                
+              </Routes>    
         </BrowserRouter>
       
       </div>
