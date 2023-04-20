@@ -1,26 +1,32 @@
-
+import React, { useContext } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../Context/AuthContenxt";
 
 
 export const Register = () => {
 
-  const register = async (e) => {
-    e.preventDefault();
-    const user = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
-    try {
-      await axios.post('http://localhost:4000/api/auth/register', user);
-      toast.success('Registered successfully');
-    } catch (err) {
-      console.log(err);
-      toast.error('Something went wrong');
-    }
-  };
+  const {authRegister} = useContext(AuthContext);
 
+    const register = async (e) => {
+      e.preventDefault();
+      const user = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+      };
+      try {
+        const res = await axios.post('http://localhost:4000/api/auth/register', user);
+        toast.success('Registered successfully');
+        if(res.data.ok){
+          authRegister(res.data.user)
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error('Something went wrong');
+      }
+    };
+  
 
   return (
 

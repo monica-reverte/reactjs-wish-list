@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContenxt';
 
 export const Login = () => {
+  const {authLogin} = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const login = async (e) => {
@@ -10,11 +13,16 @@ export const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      await axios.post('http://localhost:4000/api/auth/login', {
+      const res = await axios.post('http://localhost:4000/api/auth/login', {
         email,
         password,
       });
-      navigate('/');
+      if(res.data.ok){
+        authLogin(res.data.user);
+        navigate('/');
+      }
+      
+      
     } catch (err) {
       console.log(err);
     }

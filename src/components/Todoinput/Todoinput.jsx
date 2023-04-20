@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from "react";
+import { TodoContext } from '../Context/TodosContext';
+import { AuthContext } from '../Context/AuthContenxt';
+import axios from 'axios';
 
-export const TodoInput = ({ addTodo }) => {
+export const TodoInput = () => {
+    const {todos, setTodos} = useContext(TodoContext);
+    const {authUser} = useContext(AuthContext);
+
 
     const [title, setTitle] = useState('');
 
-    const handleAddTodo = (e) => {
-        if (e.key.toLowerCase() === 'enter') {
-            addTodo(title);
-            setTitle('');
-        }
+    
+    // const [todos, setTodos] = useState(getLocalStorage());
+    // useEffect(() => {
+    // localStorage.setItem("todos", JSON.stringify(todos));
+    // }, [todos]);
+
+    const addTodo = async () => {
+
+    const newTodo = {
+    title,
+    completed: false,
+    user: authUser.id
+}
+    try {
+        const res = await axios.post('http://localhost:4000/api/todos/add', newTodo);       
+        if(res.data.ok){
+        setTodos([...todos, res.data.todo])
     }
+    } catch (err) {
+    console.log(err);
+
+}
+
+};
+const handleAddTodo = (e) => {
+    if (e.key.toLowerCase() === 'enter') {
+        addTodo(title);
+        setTitle('');
+    }  
+}
 
     return (
 

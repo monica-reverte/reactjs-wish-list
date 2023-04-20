@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react';
 import { Title } from "../components/Title";
 import { TodoList } from "../components/TodoList";
 import { TodoInput } from "../components/Todoinput";
-import { getLocalStorage } from "../components/Utils/utils";
+import { TodoContext } from '../components/Context/TodosContext';
+// import { AuthContext } from '../components/Context/AuthContenxt';
+// import { getLocalStorage } from "../components/Utils/utils";
+// import axios from 'axios';
 
 
 
@@ -11,27 +14,13 @@ import { getLocalStorage } from "../components/Utils/utils";
 
 export function Home() {
 
-    const [todos, setTodos] = useState(getLocalStorage());
+    const {todos, setTodos} = useContext(TodoContext);
 
-    useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos]);
+    // const todoList = [...todos]
+    // todoList.push(newTodo);
 
-    const addTodo = (title) => {
+    // setTodos(todoList);
 
-    const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
-
-    const newTodo = {
-    id: lastId + 1,
-    title,
-    completed: false
-}
-
-    const todoList = [...todos]
-    todoList.push(newTodo);
-
-    setTodos(todoList);
-}
 
 
 const [activeFilter, setActiveFilter] = useState('all');
@@ -43,28 +32,14 @@ const [filteredTodos, setFilteredTodos] = useState(todos);
 
 
 
-const handleSetComplete = (id) => {
 
-    const updatedList = todos.map(todo => {
-    if (todo.id === id) {
-        return { ...todo, completed: !todo.completed}
-    }
-    return todo;
-    })
-
-    setTodos(updatedList);
-
-} 
 
 const handleClearComplete = () => {
     const updatedList = todos.filter(todo => !todo.completed);
     setTodos(updatedList);
 };
 
-const handleDelete = (id) => {
-    const updatedList = todos.filter(todo => todo.id !== id);
-    setTodos(updatedList);
-}
+
 
 
 const showAllTodos = () => {
@@ -99,15 +74,13 @@ useEffect(() => {
     
     <div>
         <Title />
-        <TodoInput addTodo={addTodo} />
+        <TodoInput />
         <TodoList
             activeFilter={activeFilter}
             todos={filteredTodos}
             showAllTodos={showAllTodos}
             showActiveTodos={showActiveTodos}
             showCompletedTodos={showCompletedTodos}
-            handleSetComplete={handleSetComplete}
-            handleDelete={handleDelete}
             handleClearComplete={handleClearComplete} />
     </div>
     

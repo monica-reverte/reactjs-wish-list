@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { TodoContext } from '../Context/TodosContext';
+import axios from 'axios';
 
-export const Todo = ({ todo, handleSetComplete, handleDelete}) => {
+export const Todo = ({ todo}) => {
 
-    const { id, title, completed } = todo;
+    const [currentTodo, setCurrentTodo] = useState(todo);
+
+    const {todos, setTodos} = useContext(TodoContext);
+    const { _id, title, completed } = todo;
+
+    const handleDelete = async(id) => {
+            const response = await axios.delete(`http://localhost:4000/api/todos/${id}`)
+            if(response.data.ok){
+                const updatedList = todos.filter(todo => todo._id !== _id);
+                setTodos(updatedList);
+            }
+            
+        }
+
+    const handleEdit = (e) => {
+        setCurrentTodo({...currentTodo, title: e.target.value})
+
+    }
+
+    const saveChanges = async(e) => {
+        if (e.key === 'Enter'){
+            const response = await axios.put("http://localhost:4000/api/todos/edit", currentTodo)
+            const newArray = todos.map(todo => todo._id === response.data._id ? response.data : todo)
+            setTodos(newArray)
+            
+        }
+    }
+
+    const handleSetComplete = async (_id) => {
+        setCurrentTodo({...currentTodo, completed: !currentTodo.completed});
+        const response = await axios.put("http://localhost:4000/api/todos/edit", currentTodo)
+            const newArray = todos.map(todo => todo._id === response.data._id ? response.data : todo)
+            setTodos(newArray)
+    
+    } 
+
 
     return (
 
@@ -11,21 +48,23 @@ export const Todo = ({ todo, handleSetComplete, handleDelete}) => {
             <div className="flex items-center">
             {
                 completed ? (
-                    <div onClick={() => handleSetComplete(id)} className="bg-violet-300 p-1 rounded-full cursor-pointer">
+                    <div onClick={() => handleSetComplete(_id)} className="bg-violet-300 p-1 rounded-full cursor-pointer">
                         <img className="h-4 w-4 " src="/checkicon.svg" alt="Check Icon" />
                     </div>
                     )
-                        : (
-                            <img onClick={() => handleSetComplete(id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in" src="/hearticon.svg" alt="heart">
+                    : (
+                        <img onClick={() => handleSetComplete(_id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in" src="/hearticon.svg" alt="heart">
                             </img>
                         )
-                }
+                    }
 
+                <input onChange={handleEdit} onKeyDown={saveChanges} type="text" value={currentTodo.title}/>
                 <p className={"pl-3 " + (completed && "line-through")}>{title}</p>
             </div>
             
             <div className="justify-items-end">
-            <img onClick={() => handleDelete(id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"src="/closeicon.svg" alt="close icon"/>
+            <img onClick={() => handleDelete(_id)} className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"src="/closeicon.svg" alt="close icon"/>
+            <img className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"src="/editicon.svg" alt="close icon" />
             </div>
         </div>
     );
