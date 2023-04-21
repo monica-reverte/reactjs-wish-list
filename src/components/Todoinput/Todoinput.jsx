@@ -11,11 +11,6 @@ export const TodoInput = () => {
 
     const [title, setTitle] = useState('');
 
-    
-    // const [todos, setTodos] = useState(getLocalStorage());
-    // useEffect(() => {
-    // localStorage.setItem("todos", JSON.stringify(todos));
-    // }, [todos]);
 
     const addTodo = async () => {
 

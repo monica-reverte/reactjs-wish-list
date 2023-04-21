@@ -26,9 +26,9 @@ export const FilterButtonContainer = ({
   )
 };
 
-export const FilterButton = ({ active, filter }) => {
+export const FilterButton = ({ action, active, filter }) => {
   return (
-      <button className={` hover:text-white cursor-pointer transition-all duration-300 ease-in-out font-bold`
+      <button onClick={action} className={` hover:text-white cursor-pointer transition-all duration-300 ease-in-out font-bold`
               + (active.toLowerCase().includes(filter.toLowerCase()) ? 'text-violet-700' : 'text-violet-500')}>{filter}</button>
   )
 }

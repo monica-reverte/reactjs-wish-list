@@ -4,42 +4,15 @@ import { Title } from "../components/Title";
 import { TodoList } from "../components/TodoList";
 import { TodoInput } from "../components/Todoinput";
 import { TodoContext } from '../components/Context/TodosContext';
-// import { AuthContext } from '../components/Context/AuthContenxt';
-// import { getLocalStorage } from "../components/Utils/utils";
-// import axios from 'axios';
-
-
 
 
 
 export function Home() {
 
-    const {todos, setTodos} = useContext(TodoContext);
+    const {todos} = useContext(TodoContext);
 
-    // const todoList = [...todos]
-    // todoList.push(newTodo);
-
-    // setTodos(todoList);
-
-
-
-const [activeFilter, setActiveFilter] = useState('all');
-const [filteredTodos, setFilteredTodos] = useState(todos);
-
-
-
-
-
-
-
-
-
-const handleClearComplete = () => {
-    const updatedList = todos.filter(todo => !todo.completed);
-    setTodos(updatedList);
-};
-
-
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [filteredTodos, setFilteredTodos] = useState(todos);
 
 
 const showAllTodos = () => {
@@ -80,8 +53,7 @@ useEffect(() => {
             todos={filteredTodos}
             showAllTodos={showAllTodos}
             showActiveTodos={showActiveTodos}
-            showCompletedTodos={showCompletedTodos}
-            handleClearComplete={handleClearComplete} />
+            showCompletedTodos={showCompletedTodos} />
     </div>
     
     )

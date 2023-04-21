@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { Login } from '../components/auth/Login';
-import { Register } from '../components/auth/Register';
 
 ;
 
@@ -11,7 +9,6 @@ export const Auth = () =>{
     
       <div>
         <Login />
-        <Register />
       </div>
     
   );

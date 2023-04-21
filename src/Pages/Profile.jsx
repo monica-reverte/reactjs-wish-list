@@ -1,53 +1,37 @@
-import axios from "axios";
-import { useEffect, useContext } from "react";
-import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+
+import {  useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from '../components/Context/AuthContenxt';
 
 
   export const Profile = () => {
-    const {authLogin, authUser} = useContext(AuthContext);
-    const navigate = useNavigate();
-  
-    // const getUser = async () => {
-    //   try {
-    //     const res = await axios.get('http://localhost:4000/api/users/me');
-    //     authLogin(res.data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
+    const {authLogout, authUser} = useContext(AuthContext);
+    
   
     
+    
 
-  const handleLogout = async () => {
-    try {
-      await axios.get('http://localhost:4000/api/auth/logout');
-      authLogin(null);
-      toast.success('Logged out successfully');
-      navigate('/auth');
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+    const handleLogout = async () => {
+      try {
+        authLogout(); 
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   return (
-    <div className="w-1/4 m-auto text-center">
-      <h1 className="text-3xl my-3 font-bold">Profile</h1>
-      <div className="mt-3">
+    <div>
+      <h1 className="text-5xl font-anton font-bold tracking-widest text-center m-20">Profile</h1>
+    <div className="flex items-center flex-col justify-between pt-20 pb-20 mb-1 mt-1 rounded-lg text-violet-100 bg-violet-400 border-solid border-violet-600">
+      <div className="flex flex-col mb-20">
 
-        <h2 className="text-2xl">Name: {authUser.name}  </h2>
-        <h2 className="text-2xl">Email: {authUser.email} </h2>
-      </div>
-      <div className="mt-3">
-        <Link to="/edit-profile">
-          <button className="bg-violet-700 text-white w-full my-2 py-2 rounded">Edit Profile</button>
-        </Link>
+        <h2 className="text-2xl font-bold m-8">Name:<span className="font-normal m-3">{authUser.name}</span></h2>
+        <h2 className="text-2xl font-bold">Email:<span className="font-normal m-3">{authUser.email}</span></h2>
       </div>
       <div>
-      <button onClick={handleLogout} className="bg-violet-700 text-white w-full my-2 py-2 rounded">Logout</button>
+      <button onClick={handleLogout} className="bg-violet-700 text-white text-lg w-full my-2 px-6 py-2 rounded">Logout</button>
       </div>
+    </div>
     </div>
   )
 }
