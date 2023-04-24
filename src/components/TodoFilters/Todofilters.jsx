@@ -7,6 +7,10 @@ import { TodoContext } from '../Context/TodosContext';
 
 export const TodoFilters = ({ total, activeFilter, showAllTodos, showActiveTodos, showCompletedTodos }) => {
 
+
+
+    
+
     const {todos, setTodos} = useContext(TodoContext);
     const {authUser} = useContext(AuthContext);
 

@@ -13,10 +13,13 @@ import { Register } from './components/auth/Register';
 
 function App() {
 
+ 
+
 
   return (
     <div className='bg-violet-200 min-h-screen font-inter h-full text-violet-700 flex items-center justify-center pb-20 px-5'>
       <div className='container flex flex-col max-w-xl'>
+      
       
             <AuthContextProvider>
               <TodoContextProvider>
@@ -33,6 +36,8 @@ function App() {
               </TodoContextProvider>
     
             </AuthContextProvider>
+            
+            
       
       </div>
         

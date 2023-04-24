@@ -5,6 +5,7 @@ import { AuthContext } from '../Context/AuthContenxt';
 import axios from 'axios';
 
 export const TodoInput = () => {
+
     const {todos, setTodos} = useContext(TodoContext);
     const {authUser} = useContext(AuthContext);
 
@@ -20,7 +21,7 @@ export const TodoInput = () => {
     user: authUser.id
 }
     try {
-        const res = await axios.post('http://localhost:4000/api/todos/add', newTodo);       
+        const res = await axios.post("http://localhost:4000/api/todos/add", newTodo);       
         if(res.data.ok){
         setTodos([...todos, res.data.todo])
     }

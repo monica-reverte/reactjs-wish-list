@@ -3,6 +3,7 @@ import { TodoContext } from '../Context/TodosContext';
 import axios from 'axios';
 
 export const Todo = ({todo}) => {
+    
 
     const [currentTodo, setCurrentTodo] = useState(todo);
     const [isEditing, setIsEditing] = useState(false);

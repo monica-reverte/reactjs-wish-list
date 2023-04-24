@@ -1,10 +1,12 @@
 
 import {  useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from '../components/Context/AuthContenxt';
 
 
+
   export const Profile = () => {
+
+   
     const {authLogout, authUser} = useContext(AuthContext);
     
   
@@ -35,3 +37,8 @@ import { AuthContext } from '../components/Context/AuthContenxt';
     </div>
   )
 }
+
+
+
+
+// onClick={()=>logout({logoutParams:{returnTo: window.location.origin}})} 

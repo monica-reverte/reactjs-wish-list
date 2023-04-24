@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+
 import { AuthContext } from "../Context/AuthContenxt";
+import { useNavigate } from "react-router-dom";
 
 
 export const Register = () => {
+
+  const navigate = useNavigate();
 
   const {authRegister} = useContext(AuthContext);
 
@@ -16,14 +19,14 @@ export const Register = () => {
         password: e.target.password.value,
       };
       try {
-        const res = await axios.post('http://localhost:4000/api/auth/register', user);
-        toast.success('Registered successfully');
+        const res = await axios.post("http://localhost:4000/api/auth/register", user); 
+        console.log(res)      
         if(res.data.ok){
           authRegister(res.data.user)
+          navigate('/');
         }
       } catch (err) {
         console.log(err);
-        toast.error('Something went wrong');
       }
     };
   
