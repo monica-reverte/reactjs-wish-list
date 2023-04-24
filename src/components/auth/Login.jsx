@@ -10,26 +10,25 @@ export const Login = () => {
 
   const auth = getAuth()
 
+  const navigate = useNavigate();
 
 
   const {authLogin} = useContext(AuthContext);
 
-  const loginWithPopup = async (user) => {
-    const response = await signInWithPopup(auth, googleProvider)
+  const loginWithPopup = async () => {
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/login");
+      const response = await signInWithPopup(auth, googleProvider)
+      const res = await axios.post("http://localhost:4000/api/auth/firebase", response.user.auth.currentUser );      
       if(res.data.ok){
         authLogin(res.data.user);
         navigate('/');
-      }
-      
-      
+      } 
     } catch (err) {
       console.log(err);
     }
   }
 
-  const navigate = useNavigate();
+  
 
   const login = async (e) => {
     

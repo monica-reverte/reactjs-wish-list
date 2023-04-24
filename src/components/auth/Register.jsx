@@ -19,8 +19,7 @@ export const Register = () => {
         password: e.target.password.value,
       };
       try {
-        const res = await axios.post("http://localhost:4000/api/auth/register", user); 
-        console.log(res)      
+        const res = await axios.post("http://localhost:4000/api/auth/register", user);     
         if(res.data.ok){
           authRegister(res.data.user)
           navigate('/');
