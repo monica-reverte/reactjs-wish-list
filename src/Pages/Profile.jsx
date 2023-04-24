@@ -6,7 +6,6 @@ import { AuthContext } from '../components/Context/AuthContenxt';
 
   export const Profile = () => {
 
-   
     const {authLogout, authUser} = useContext(AuthContext);
     
   
