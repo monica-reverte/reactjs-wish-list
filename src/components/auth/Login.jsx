@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContenxt';
 import { getAuth, signInWithPopup } from 'firebase/auth';
 import { googleProvider } from '../../firebaseConfig';
+import { AiFillGoogleCircle } from "react-icons/ai"
 
 
 export const Login = () => {
@@ -66,7 +67,13 @@ export const Login = () => {
         </div>
             <button type="submit" className="bg-violet-700 text-white w-full py-2 rounded" >Login</button>           
         </form>
-        <button onClick={loginWithPopup }type="submit" className="bg-violet-700 text-white w-full py-2 rounded" >Login with google</button>
+        
+        
+        <button onClick={loginWithPopup }type="submit" className="flex flex-row bg-violet-700 text-white w-full py-2 rounded mt-3" >
+          <AiFillGoogleCircle className="m-1 text-2xl"/>
+          <span className="ml-1">Google Login</span>
+          </button>
+        
     </div>
   )
 }
